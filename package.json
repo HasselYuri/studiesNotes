@@ -1,0 +1,24 @@
+{
+  "name": "studiesnotes",
+  "version": "1.0.0",
+  "description": "I will put here the exercises, works and notes of my curs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HasselYuri/studiesNotes.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HasselYuri/studiesNotes/issues"
+  },
+  "homepage": "https://github.com/HasselYuri/studiesNotes#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "nodemon": "^3.0.1"
+  }
+}
