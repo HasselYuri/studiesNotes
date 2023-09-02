@@ -20,6 +20,26 @@ const {
 const {
   pesoDasCincoPessoas,
 } = require("./JavaScript/Exercicios/fazendoExercicios/exercicio03.js");
+const {
+  convertendoTemperaturas,
+} = require("./JavaScript/Exercicios/fazendoExercicios/exercicio04.js");
+
+const {
+  convertendoDistancias,
+} = require("./JavaScript/Exercicios/fazendoExercicios/exercicio05.js");
+
+const {
+  convertendoTempoEvento,
+} = require("./JavaScript/Exercicios/fazendoExercicios/exercicio06.js");
+
+const {
+  convertendoQuilometrosEmDerivados,
+} = require("./JavaScript/Exercicios/fazendoExercicios/exercicio07.js");
+
+const {
+  tabuadaAteDez,
+} = require("./JavaScript/Exercicios/fazendoExercicios/exercicio08.js");
+
 
 const app = express();
 const porta = 3000;
@@ -65,6 +85,75 @@ app.post("/api/exercicio03", (req, res) => {
 
 // Fim Exercicio 3
 
+//Inicio Exercicio 4
+
+app.post("/api/exercicio04", (req, res) => {
+  const termometro = convertendoTemperaturas(req.body.temperatura);
+
+  res.status(200).json({
+    message: `A temperatura convertida em F equivale a: ${termometro}.`,
+  });
+});
+
+//Fim Exercicio 4
+
+//Inicio Exercicio 5
+
+app.post("/api/exercicio05", (req, res) => {
+  const medidometro = convertendoDistancias(req.body.distancia);
+
+  res.status(200).json({
+    message: `A distancia convertida em quilometros equivale a: ${medidometro}.`,
+  });
+});
+
+//Fim Exercicio 5
+
+//Inicio Exercicio 6
+
+app.post("/api/exercicio06", (req, res) => {
+  
+  const segundosDoEvento = req.body.segundo;
+  const resultado = convertendoTempoEvento(segundosDoEvento);
+
+  res.status(200).json({
+    message: `O evento terá: ${resultado.horas} horas, ${resultado.minutos} minutos e ${resultado.segundos} segundos.`,
+  });
+});
+
+//Fim Exercicio 6
+
+//Inicio Exercicio 7
+
+app.post("/api/exercicio07", (req, res) => {
+  
+  const distanciaExemplo = req.body.km;
+  const resultado = convertendoQuilometrosEmDerivados(distanciaExemplo);
+
+  res.status(200).json({
+    message: `A distancia equivale a: ${resultado.quilometros} quilometros, ${resultado.metros} metros e ${resultado.centimentros} centimetros.`,
+  });
+});
+
+//Fim Exercicio 7
+
+//Inicio Exercicio 8
+
+app.post("/api/exercicio08", (req, res) => {
+  
+  const tabuadaExemplo = req.body.num;
+  const resultado = tabuadaAteDez(tabuadaExemplo);
+
+  res.status(200).json({
+    message: `${resultado.numero} * ${resultado.tabuada}`,
+  });
+});
+
+//Fim Exercicio 8
+
+
+
 
 app.listen(porta, () => {
-  console.log(`O servidor está rodando na porta ${porta}`);});
+  console.log(`O servidor está rodando na porta ${porta}`);
+});
