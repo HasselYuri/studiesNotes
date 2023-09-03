@@ -40,6 +40,19 @@ const {
   tabuadaAteDez,
 } = require("./JavaScript/Exercicios/fazendoExercicios/exercicio08.js");
 
+const {
+  sistemaDeBoletimEscolar,
+} = require("./JavaScript/Exercicios/fazendoExercicios/exercicio09.js");
+
+const {
+  sistemaDeIMC,
+} = require("./JavaScript/Exercicios/fazendoExercicios/exercicio10.js");
+
+const {
+  sistemaSimplesCalculadora,
+} = require("./JavaScript/Exercicios/fazendoExercicios/exercicio11.js");
+
+
 
 const app = express();
 const porta = 3000;
@@ -145,12 +158,50 @@ app.post("/api/exercicio08", (req, res) => {
   const resultado = tabuadaAteDez(tabuadaExemplo);
 
   res.status(200).json({
-    message: `${resultado.numero} * ${resultado.tabuada}`,
+    message: `A tabuada do ${resultado.num} até sua 10° multiplicação equivale, na ordem crescente, a: ${resultado.tabuada}`,
   });
 });
 
 //Fim Exercicio 8
 
+//Inicio Exercicio 9
+
+app.post("/api/exercicio09", (req, res) => {
+  const {nota1, nota2, nota3} = req.body;
+  const boletim = sistemaDeBoletimEscolar(nota1, nota2, nota3);
+
+  res.status(200).json({
+    message: `O status do aluno nessa matéria é de: ${boletim}.`,
+  });
+});
+
+//Fim Exercicio 9
+
+//Inicio Exercicio 10
+
+app.post("/api/exercicio10", (req, res) => {
+  const {genero, peso, altura} = req.body;
+  const resultado = sistemaDeIMC(genero, peso, altura);
+
+  res.status(200).json({
+    message: `O status do IMC tem equivalencia a: ${resultado}`,
+  });
+});
+
+//Fim Exercicio 10
+
+//Inicio Exercicio 11
+
+app.post("/api/exercicio11", (req, res) => {
+  const {operacao, num1, num2} = req.body;
+  const resultado = sistemaSimplesCalculadora(operacao, num1, num2);
+
+  res.status(200).json({
+    message: `O resulado da operação: ${resultado}`,
+  });
+});
+
+//Fim Exercicio 11
 
 
 
