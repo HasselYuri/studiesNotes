@@ -52,6 +52,26 @@ const {
   sistemaSimplesCalculadora,
 } = require("./JavaScript/Exercicios/fazendoExercicios/exercicio11.js");
 
+const {
+  sistemaLeitorPositivoOuNegativo,
+} = require("./JavaScript/Exercicios/fazendoExercicios/exercicio12.js");
+
+const {
+  sistemaLeitorParesOuImpares,
+} = require("./JavaScript/Exercicios/fazendoExercicios/exercicio13.js");
+
+const {
+  sistemaLeitorNumeroMaior,
+} = require("./JavaScript/Exercicios/fazendoExercicios/exercicio14.js");
+
+const {
+  sistemaLeitorDeTriangulo,
+} = require("./JavaScript/Exercicios/fazendoExercicios/exercicio15.js");
+
+const {
+  sistemaCalculoDeImpostos,
+} = require("./JavaScript/Exercicios/fazendoExercicios/exercicio16.js");
+
 
 
 const app = express();
@@ -202,6 +222,71 @@ app.post("/api/exercicio11", (req, res) => {
 });
 
 //Fim Exercicio 11
+
+//Inicio Exercicio 12
+
+app.post("/api/exercicio12", (req, res) => {
+  const {num} = req.body;
+  const resultado = sistemaLeitorPositivoOuNegativo(num);
+
+  res.status(200).json({
+    message: `Seu número é: ${resultado}`,
+  });
+});
+
+//Fim Exercicio 12
+
+//Inicio Exercicio 13
+
+app.post("/api/exercicio13", (req, res) => {
+  const {num} = req.body;
+  const resultado = sistemaLeitorParesOuImpares(num);
+
+  res.status(200).json({
+    message: `Seu número é: ${resultado}`,
+  });
+});
+
+//Fim Exercicio 13
+
+//Inicio Exercicio 14
+
+app.post("/api/exercicio14", (req, res) => {
+  const {num1, num2} = req.body;
+  const resultado = sistemaLeitorNumeroMaior(num1, num2);
+
+  res.status(200).json({
+    message: `${resultado}`,
+  });
+});
+
+//Fim Exercicio 14
+
+//Inicio Exercicio 15
+
+app.post("/api/exercicio15", (req, res) => {
+  const {l1, l2, l3} = req.body;
+  const resultado = sistemaLeitorDeTriangulo(l1, l2, l3);
+
+  res.status(200).json({
+    message: `${resultado}`,
+  });
+});
+
+//Fim Exercicio 15
+
+//Inicio Exercicio 16
+
+app.post("/api/exercicio16", (req, res) => {
+  const {nCpfUsu, numDepUsu, rendaMensUsu} = req.body;
+  const resultado = sistemaCalculoDeImpostos(nCpfUsu, numDepUsu, rendaMensUsu);
+
+  res.status(200).json({
+    message: `O resultado do seu teste é o seguinte : ${resultado.nCpfUsu} e terá % na aliquota equivalente a : ${resultado.resultado}`,
+  });
+});
+
+//Fim Exercicio 16
 
 
 
