@@ -72,8 +72,6 @@ const {
   sistemaCalculoDeImpostos,
 } = require("./JavaScript/Exercicios/fazendoExercicios/exercicio16.js");
 
-
-
 const app = express();
 const porta = 3000;
 
@@ -82,11 +80,15 @@ app.use(express.json());
 // Inicio Exercicio 1
 
 app.post("/api/exercicio01", (req, res) => {
-  const soma = doisNumerosReais(req.body.num1, req.body.num2);
-
-  res.status(200).json({
-    message: `A soma dos 2 números reais equivale a: ${soma}.`,
-  });
+  try {
+    const soma = doisNumerosReais(req.body.num1, req.body.num2);
+    res.status(200).json({
+      message: `A soma dos 2 números reais equivale a: ${soma}.`,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Deu ruim" });
+  }
 });
 
 //Fim Exercicio 1
@@ -145,7 +147,6 @@ app.post("/api/exercicio05", (req, res) => {
 //Inicio Exercicio 6
 
 app.post("/api/exercicio06", (req, res) => {
-  
   const segundosDoEvento = req.body.segundo;
   const resultado = convertendoTempoEvento(segundosDoEvento);
 
@@ -159,7 +160,6 @@ app.post("/api/exercicio06", (req, res) => {
 //Inicio Exercicio 7
 
 app.post("/api/exercicio07", (req, res) => {
-  
   const distanciaExemplo = req.body.km;
   const resultado = convertendoQuilometrosEmDerivados(distanciaExemplo);
 
@@ -173,7 +173,6 @@ app.post("/api/exercicio07", (req, res) => {
 //Inicio Exercicio 8
 
 app.post("/api/exercicio08", (req, res) => {
-  
   const tabuadaExemplo = req.body.num;
   const resultado = tabuadaAteDez(tabuadaExemplo);
 
@@ -187,7 +186,7 @@ app.post("/api/exercicio08", (req, res) => {
 //Inicio Exercicio 9
 
 app.post("/api/exercicio09", (req, res) => {
-  const {nota1, nota2, nota3} = req.body;
+  const { nota1, nota2, nota3 } = req.body;
   const boletim = sistemaDeBoletimEscolar(nota1, nota2, nota3);
 
   res.status(200).json({
@@ -200,7 +199,7 @@ app.post("/api/exercicio09", (req, res) => {
 //Inicio Exercicio 10
 
 app.post("/api/exercicio10", (req, res) => {
-  const {genero, peso, altura} = req.body;
+  const { genero, peso, altura } = req.body;
   const resultado = sistemaDeIMC(genero, peso, altura);
 
   res.status(200).json({
@@ -213,7 +212,7 @@ app.post("/api/exercicio10", (req, res) => {
 //Inicio Exercicio 11
 
 app.post("/api/exercicio11", (req, res) => {
-  const {operacao, num1, num2} = req.body;
+  const { operacao, num1, num2 } = req.body;
   const resultado = sistemaSimplesCalculadora(operacao, num1, num2);
 
   res.status(200).json({
@@ -226,7 +225,7 @@ app.post("/api/exercicio11", (req, res) => {
 //Inicio Exercicio 12
 
 app.post("/api/exercicio12", (req, res) => {
-  const {num} = req.body;
+  const { num } = req.body;
   const resultado = sistemaLeitorPositivoOuNegativo(num);
 
   res.status(200).json({
@@ -239,7 +238,7 @@ app.post("/api/exercicio12", (req, res) => {
 //Inicio Exercicio 13
 
 app.post("/api/exercicio13", (req, res) => {
-  const {num} = req.body;
+  const { num } = req.body;
   const resultado = sistemaLeitorParesOuImpares(num);
 
   res.status(200).json({
@@ -252,7 +251,7 @@ app.post("/api/exercicio13", (req, res) => {
 //Inicio Exercicio 14
 
 app.post("/api/exercicio14", (req, res) => {
-  const {num1, num2} = req.body;
+  const { num1, num2 } = req.body;
   const resultado = sistemaLeitorNumeroMaior(num1, num2);
 
   res.status(200).json({
@@ -265,7 +264,7 @@ app.post("/api/exercicio14", (req, res) => {
 //Inicio Exercicio 15
 
 app.post("/api/exercicio15", (req, res) => {
-  const {l1, l2, l3} = req.body;
+  const { l1, l2, l3 } = req.body;
   const resultado = sistemaLeitorDeTriangulo(l1, l2, l3);
 
   res.status(200).json({
@@ -278,7 +277,7 @@ app.post("/api/exercicio15", (req, res) => {
 //Inicio Exercicio 16
 
 app.post("/api/exercicio16", (req, res) => {
-  const {nCpfUsu, numDepUsu, rendaMensUsu} = req.body;
+  const { nCpfUsu, numDepUsu, rendaMensUsu } = req.body;
   const resultado = sistemaCalculoDeImpostos(nCpfUsu, numDepUsu, rendaMensUsu);
 
   res.status(200).json({
@@ -287,8 +286,6 @@ app.post("/api/exercicio16", (req, res) => {
 });
 
 //Fim Exercicio 16
-
-
 
 app.listen(porta, () => {
   console.log(`O servidor está rodando na porta ${porta}`);

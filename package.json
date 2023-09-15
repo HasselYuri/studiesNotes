@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
-    "test": "jest test/index.test.js",
-    "test:cov": "jest test/index.test.js --coverage"
+    "test": "jest test/**.test.js", 
+    "test:cov": "jest test/*.test.js --coverage"
   },
   "repository": {
     "type": "git",
