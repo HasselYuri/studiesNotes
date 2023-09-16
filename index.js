@@ -10,6 +10,7 @@ const express = require("express");
 
 //let - consegue alterar variavel
 //const - não consegue alterar variavel
+const router = require("./src/routes/exercicio.js");
 
 const {
   doisNumerosReais,
@@ -286,6 +287,9 @@ app.post("/api/exercicio16", (req, res) => {
 });
 
 //Fim Exercicio 16
+
+app.use(express.json());
+app.use(router);
 
 app.listen(porta, () => {
   console.log(`O servidor está rodando na porta ${porta}`);
