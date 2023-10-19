@@ -11,6 +11,7 @@ const express = require("express");
 //let - consegue alterar variavel
 //const - não consegue alterar variavel
 const router = require("./src/routes/exercicio.js");
+const Pessoa = require('./src/model/exercicio.js')
 
 const {
   doisNumerosReais,
@@ -294,3 +295,17 @@ app.use(router);
 app.listen(porta, () => {
   console.log(`O servidor está rodando na porta ${porta}`);
 });
+
+
+//Coisas do banco de dados aula 28.09.2023
+
+// const mysql = require("mysql");
+
+// const db = mysql.createConnection({
+//   user: 'root',
+//   password: '',
+//   database: 'exemplo',
+//   host: 'localhost',
+//   dialect: 'mysql',
+// });
+
